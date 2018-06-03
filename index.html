@@ -69,6 +69,26 @@
 			.item-detail h3 {
 				margin-top: 0;
 			}
+
+			@media screen and (min-width: 381px) and (max-width: 440px) {
+				.self-img	{
+							width: 120px !important;
+							height: 120px !important;
+					}
+			}
+			@media screen and (min-width: 331px) and (max-width: 380px) {
+				.self-img	{
+							width: 96px !important;
+							height: 96px !important;
+					}
+			}
+			@media screen and (max-width: 330px) {
+				.self-img	{
+							width: 150px;
+							height: 150px;
+					}
+			}
+
 		</style>
 		<script>
 			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -88,7 +108,7 @@
 			<div class="col-md-10 col-md-offset-1">
 			<br>
 				<div class="col-md-2">
-        				<img class="media-object img-circle pull-right"
+        				<img class="media-object img-circle pull-right self-img"
 							data-src="holder.js/64x64" alt="64x64" src="self.jpeg"
 							style="width: 150px; height: 150px;">
 				</div>
@@ -97,7 +117,7 @@
 					<hr>
 					<p class="location text col-md-6">
 						<span class="fa fa-location-arrow"></span>
-						Esplanade 5, Berlin, DE 13187
+						Berlin, DE 13187
 						<br>
 						<span class="social-links-wrapper">
 							<a href="https://www.linkedin.com/in/yotam-katznelson/" target="_blank">
