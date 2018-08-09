@@ -488,10 +488,99 @@
 				</div>
 			</div>
 		</div>
+		<div id="pts" style="width: 100%; height: 400px; margin: 30px auto 0;"></div>
 
 		<link href='http://fonts.googleapis.com/css?family=PT+Mono' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="https://unpkg.com/pts/dist/pts.min.js"></script>
+		<script>// Source code licensed under Apache License 2.0.
+			// Copyright © 2017 William Ngan. (https://github.com/williamngan/pts)
+			Pts.quickStart( "#pts", "#123" );
+
+			const fishEye = function() {
+				var pts = [];
+				var colors = ["#ff2d5d", "#42dc8e", "#2e43eb", "#ffe359"];
+				space.add( {
+					// init with 500 random points
+					start: (bound) => { pts = Create.distributeRandom( space.innerBound, 500 ); },
+					animate: (time, ftime) => {
+						let r = Math.abs( space.pointer.x-space.center.x )/space.center.x * 150 + 70;
+						let range = Circle.fromCenter( space.pointer, r );
+						// check if each point is within circle's range
+						for (let i=0, len=pts.length; i<len; i++) {
+							if ( Circle.withinBound( range, pts[i] ) ) {
+								// calculate circle size
+								let dist = (r - pts[i].$subtract(space.pointer).magnitude() ) / r;
+								let p = pts[i].$subtract( space.pointer ).scale( 1+dist ).add( space.pointer );
+								form.fillOnly( colors[i%4] ).point( p, dist*25, "circle" );
+							} else {
+								form.fillOnly("#fff").point(pts[i], 0.5);
+							}
+						}
+					}
+				});
+				space.bindMouse().bindTouch().play();
+			}
+
+			const followEye = function() {
+				var pts = [];
+				var follower = new Pt(); // follows the pointer
+				space.add({
+					start: (bound) => {
+						pts = Create.gridCells( space.innerBound, 40, 20 );
+						follower = space.center;
+					},
+					animate: (time, ftime) => {
+						follower = follower.add( space.pointer.$subtract( follower ).divide(5) );
+						form.stroke("#123");
+						// calculate the size and color of each cell based on its distance to the pointer
+						let rects = pts.map( (p) => {
+							let mag = follower.$subtract( Rectangle.center( p ) ).magnitude()
+							let scale = Math.min( 1, Math.abs( 1 - ( 2 * mag / space.center.y ) ) );
+							let r = Rectangle.fromCenter( Rectangle.center(p), Rectangle.size(p).multiply( scale ) );
+							form.fill( Color.HSLtoRGB( Color.hsl( scale*270, 1, 0.5 ) ).hex ).rect( r );
+						})
+					}
+				});
+				space.bindMouse().bindTouch().play();
+			}
+
+			// const hypno = function() {
+			// 	// A function to recusively draw interpolated squares up to max depth
+			// 	var interpolate = (pts, _t, depth, max) => {
+			// 		if (depth > max) return;
+			// 		let g = new Group();
+			// 		let t = Num.boundValue( _t, 0, 1 );
+
+			// 		for (let i=1, len=pts.length; i<len; i++) {
+			// 			g.push( Geom.interpolate( pts[i-1], pts[i], t ) );
+			// 		}
+			// 		g.push( Geom.interpolate( pts[pts.length-1], pts[0], t ) );
+
+			// 		form.fillOnly( (depth%2===0) ? "#fff" : "#123" ).polygon( g );
+			// 		interpolate( g, t+0.02, depth+1, max );
+			// 	}
+
+			// 	// Pts quick start mode.
+			// 	var run = Pts.quickStart("#pt", "#fe3");
+			// 	run( (time, ftime) => {
+			// 		let size = space.size.$multiply(1).minValue().value;
+			// 		let rect = Rectangle.corners( [space.center.$subtract( size ), space.center.$add( size )] );
+			// 		let t = (space.pointer.x / space.size.x) + (time%10000/10000);
+			// 		interpolate( rect, t, 0, 20 );
+			// 	});
+			// }
+
+			// Run random function of pts.
+			function getFunc(choices) {
+				var index = Math.floor(Math.random() * choices.length);
+				return choices[index];
+			}
+
+			const options = [fishEye, followEye];
+			getFunc(options)();
+		</script>
 	</body>
 </html>
