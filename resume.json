@@ -1,0 +1,216 @@
+{
+  "basics": {
+    "name": "Yotam Katznelson",
+    "label": "Professional IT Engineer and Technical Leader",
+    "image": "linkedin_img",
+    "email": " [email protected]",
+    "phone": " [phone protected]",
+    "location": {
+      "address": "",
+      "postalCode": "",
+      "city": "Europe",
+      "countryCode": ""
+    },
+    "summary": "Electric Engineer by education. Software Engineer by profession. Successfully leading development teams in various initiatives and domains. Excelling in distilling ideas into actions, bootstrapping tech teams and scaling operations. Strong knowledge base and familiarity with financial engineering, in the intersection between regulated/traditional finance and Blockchain technology."
+  },
+  "work": [
+    {
+      "name": "Backed Finance AG",
+      "position": "COO",
+      "startDate": "2024",
+      "endDate": "present",
+      "location": "Switzerland / Earth (remote team)",
+      "summary": "Leading the operational efforts of the company. Coordinating HR, Legal, Compliance, Finance, and Business Development."
+    },
+    {
+      "name": "Backed Finance AG",
+      "position": "CTO",
+      "startDate": "2022",
+      "endDate": "present",
+      "location": "Switzerland / Earth (remote team)",
+      "summary": "In charge of technical vision and engineering efforts of skilled engineers team. Revolutionizing financial structures and tokenizing real world assets on chain."
+    },
+    {
+      "name": "21Shares AG",
+      "position": "CTO",
+      "startDate": "2019",
+      "endDate": "2022",
+      "location": "Switzerland / USA / Earth (remote team)",
+      "summary": "Leading an international team of engineers and driving forward the technology vision of the organization. Scaled up the engineering department from 1 to 50 engineers, across eight different teams. Architected, implemented and maintained a financial backoffice system that runs 24/7. Directing the technological & strategic thinking of the organization."
+    },
+    {
+      "name": "Securitize",
+      "position": "VP R&D",
+      "startDate": "2018",
+      "endDate": "",
+      "location": "Remote team - Germany / Ukraine / Israel / USA",
+      "summary": "In charge of building white label platform for ICO of Security tokens on the Ethereum blockchain. System architecture. Coordination and orchestration of the product development."
+    },
+    {
+      "name": "Beluga R&D Ltd.",
+      "position": "Founder",
+      "startDate": "2018",
+      "endDate": "present",
+      "location": "Germany / Israel / Earth",
+      "summary": "Personal (occasionally professional) playground."
+    },
+    {
+      "name": "Minerva",
+      "position": "CO-Founder & CTO",
+      "startDate": "2017",
+      "endDate": "2021",
+      "location": "Earth",
+      "summary": "Founder and technical lead of autonomous cryptocurrencies trading platform. Fullstack development of the entire platform. Business development and investors community management."
+    },
+    {
+      "name": "Neon GmbH (rebranded to Trade Republic)",
+      "position": "Principal Staff Engineer",
+      "startDate": "2017",
+      "endDate": "2018",
+      "location": "Germany",
+      "summary": "Leading the development of a fintech application in the brokerage domain. Design, architecture, and implementation of main backend systems."
+    },
+    {
+      "name": "Cliqz GmbH",
+      "position": "Senior Software Engineer",
+      "startDate": "2017",
+      "endDate": "",
+      "location": "Munich, Germany",
+      "summary": "Member of the core browser team. Focused mainly on low level client-side developments. Implemented solutions to various problems using advanced modern standards."
+    },
+    {
+      "name": "Mapegy GmbH",
+      "position": "Freelance Senior Software Engineer",
+      "startDate": "2016",
+      "endDate": "",
+      "location": "Berlin, Germany",
+      "summary": "Divided equally between full stack front end development and hardcore data engineering. Integrating data sources and improving quality of data."
+    },
+    {
+      "name": "HALO Analytics",
+      "position": "VP Engineering",
+      "startDate": "2015",
+      "endDate": "2016",
+      "location": "Israel",
+      "summary": "Defined the product and executed its implementation. Planned and defined processes for the product wide scale phase. Successfully delivered multiple product's iterations in pressing time tables."
+    },
+    {
+      "name": "Ayyeka Technologies Ltd.",
+      "position": "Application Engineer",
+      "startDate": "2013",
+      "endDate": "2015",
+      "location": "Jerusalem, Israel",
+      "summary": "Managed the company DevOps section. Developed essential monitoring systems for the company products. Served as the 'quick & dirty development guy' for high demand quick solutions."
+    },
+    {
+      "name": "Quickest Owl Ltd.",
+      "position": "Freelancer Software Engineer",
+      "startDate": "2013",
+      "endDate": "2015",
+      "location": "Israel",
+      "summary": "Developed frontend and backend for a massive active protection system."
+    }
+  ],
+  "education": [
+    {
+      "institution": "Hebrew University of Jerusalem",
+      "area": "Electric Engineering, Major in Computer Engineering",
+      "studyType": "Bachelors",
+      "startDate": "2009",
+      "endDate": "2014",
+      "courses": [
+        "67504 - Algorithms",
+        "67521 - Computational models, Computability and Complexity",
+        "67506 - Databases",
+        "67555 - Modern Internet Technologies",
+        "67609 - Computer Graphics",
+        "67829 - Image Processing",
+        "67808 - Operating Systems",
+        "67200 - Computer Architecture",
+        "67577 - Machine Learning"
+      ]
+    },
+    {
+      "institution": "Technical University Berlin",
+      "area": "Technology Innovation Management",
+      "studyType": "Exchange Student, M.B.A Program",
+      "startDate": "2012",
+      "endDate": "2012",
+      "courses": [
+        "Strategic Innovation Management",
+        "Technology Management"
+      ]
+    }
+  ],
+  "skills": [
+    "Python",
+    "JavaScript",
+    "Java",
+    "C++",
+    "Frontend",
+    "Backend",
+    "Full stack",
+    "Security",
+    "Blockchain",
+    "Relational Databases",
+    "In-Memory (noSQL) Databases",
+    "Big Data",
+    "Machine Learning",
+    "Cloud Infrastructure",
+    "Scripting & utilities",
+    "IoT Development",
+    "Boards Git",
+    "Data visualization",
+    "Agile"
+  ],
+  "volunteer": [
+    {
+      "organization": "V15",
+      "position": "Digital campaign team member",
+      "startDate": "2015",
+      "endDate": "2015",
+      "summary": "Took part in the biggest (to date) non partisan related political campaign."
+    },
+    {
+      "organization": "Media Noche Salsa",
+      "position": "Board member and instructor",
+      "startDate": "2009",
+      "endDate": "2013",
+      "summary": "In a free-of-charge dance club / organization."
+    }
+  ],
+  "languages": [
+    {
+      "language": "Hebrew",
+      "fluency": "Native or bilingual proficiency"
+    },
+    {
+      "language": "English",
+      "fluency": "Full professional proficiency"
+    },
+    {
+      "language": "German",
+      "fluency": "Limited working proficiency"
+    }
+  ],
+  "references": [
+    {
+      "name": "Ariel Stern",
+      "position": "CEO",
+      "company": "Ayyeka Technologies Ltd.",
+      "quote": "Mr. Katznelson proved to be a valuable team member, handling numerous tasks that require both a high level of creativity and a ‘getting things done’ attitude."
+    },
+    {
+      "name": "Dr. Peter Walde",
+      "position": "CEO",
+      "company": "Mapegy GmbH",
+      "quote": "Yotam Katznelson showed an excellent experience and knowledge in many fields, both technical and intellectual."
+    },
+    {
+      "name": "Amnon Demri",
+      "position": "CEO",
+      "company": "Quickest Owl Ltd.",
+      "quote": "In his work, Yotam Katznelson presented outstanding capabilities. He presented outstanding degree of commitment for the project."
+    }
+  ]
+}

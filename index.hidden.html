@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/png" href="./favicon_cat.ico">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<style>
+		body {
+			font-family: 'Lato';
+			background-image: url("https://cdn.backgroundhost.com/backgrounds/subtlepatterns/snow.png");
+		}
+
+		.headline p {
+			font-size: 14px;
+			font-weight: bold;
+		}
+
+		.oswald-font {
+			font-family: 'oswald';
+			vertical-align: bottom;
+		}
+
+		.name {
+			text-transform: uppercase;
+		}
+
+		a:hover {
+			text-decoration: none;
+		}
+
+		.link-github {
+			color: #454545;
+		}
+
+		.link-github:hover {
+			color: black;
+		}
+
+		.link-twitter {
+			color: #33CCFF;
+		}
+
+		.social-link {
+			margin-left: 5px;
+		}
+
+		.social-link:first-child {
+			margin-left: 0;
+		}
+
+		.link-blog {
+			color: rgb(243, 111, 36);
+		}
+
+		.link-blog:hover {
+			color: rgb(211, 97, 32);
+		}
+
+		.summary {
+			font-family: "Pt mono";
+			/*font-size: 1.2em;*/
+			font-size: 18px;
+		}
+
+		.wip {
+			position: absolute;
+			right: 0;
+		}
+
+		.item-detail h3 {
+			margin-top: 0;
+		}
+
+		pre.quote {
+			white-space: pre-wrap;
+			font-style: italic;
+			word-break: break-word;
+			font-size: 14px;
+			line-height: 20px;
+		}
+
+		@media screen and (max-width: 440px) {
+			.position-location {
+				margin-top: 40px;
+			}
+
+			.position-time {
+				margin-top: 5px;
+			}
+		}
+
+		@media screen and (min-width: 381px) and (max-width: 440px) {
+			.self-img {
+				width: 120px !important;
+				height: 120px !important;
+			}
+		}
+
+		@media screen and (min-width: 331px) and (max-width: 380px) {
+			.self-img {
+				width: 96px !important;
+				height: 96px !important;
+			}
+		}
+
+		@media screen and (max-width: 330px) {
+			.self-img {
+				width: 150px;
+				height: 150px;
+			}
+		}
+	</style>
+	<script>
+		(function (i, s, o, g, r, a, m) {
+			i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+				(i[r].q = i[r].q || []).push(arguments)
+			}, i[r].l = 1 * new Date(); a = s.createElement(o),
+				m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+		})(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+		ga('create', 'UA-83214600-1', 'auto');
+		ga('send', 'pageview');
+
+	</script>
+</head>
+
+<body>
+	<div id="pts" style="width: 100%; height: 400px; margin: 30px auto 0;"></div>
+	<link href='https://fonts.googleapis.com/css?family=PT+Mono' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="https://unpkg.com/pts/dist/pts.min.js"></script>
+	<script>// Source code licensed under Apache License 2.0.
+		// Copyright © 2017 William Ngan. (https://github.com/williamngan/pts)
+		Pts.quickStart("#pts", "#123");
+
+		const fishEye = function () {
+			var pts = [];
+			var colors = ["#ff2d5d", "#42dc8e", "#2e43eb", "#ffe359"];
+			space.add({
+				// init with 500 random points
+				start: (bound) => { pts = Create.distributeRandom(space.innerBound, 500); },
+				animate: (time, ftime) => {
+					let r = Math.abs(space.pointer.x - space.center.x) / space.center.x * 150 + 70;
+					let range = Circle.fromCenter(space.pointer, r);
+					// check if each point is within circle's range
+					for (let i = 0, len = pts.length; i < len; i++) {
+						if (Circle.withinBound(range, pts[i])) {
+							// calculate circle size
+							let dist = (r - pts[i].$subtract(space.pointer).magnitude()) / r;
+							let p = pts[i].$subtract(space.pointer).scale(1 + dist).add(space.pointer);
+							form.fillOnly(colors[i % 4]).point(p, dist * 25, "circle");
+						} else {
+							form.fillOnly("#fff").point(pts[i], 0.5);
+						}
+					}
+				}
+			});
+			space.bindMouse().bindTouch().play();
+		}
+
+		const followEye = function () {
+			var pts = [];
+			var follower = new Pt(); // follows the pointer
+			space.add({
+				start: (bound) => {
+					pts = Create.gridCells(space.innerBound, 40, 20);
+					follower = space.center;
+				},
+				animate: (time, ftime) => {
+					follower = follower.add(space.pointer.$subtract(follower).divide(5));
+					form.stroke("#123");
+					// calculate the size and color of each cell based on its distance to the pointer
+					let rects = pts.map((p) => {
+						let mag = follower.$subtract(Rectangle.center(p)).magnitude()
+						let scale = Math.min(1, Math.abs(1 - (2 * mag / space.center.y)));
+						let r = Rectangle.fromCenter(Rectangle.center(p), Rectangle.size(p).multiply(scale));
+						form.fill(Color.HSLtoRGB(Color.hsl(scale * 270, 1, 0.5)).hex).rect(r);
+					})
+				}
+			});
+			space.bindMouse().bindTouch().play();
+		}
+
+		// const hypno = function() {
+		// 	// A function to recusively draw interpolated squares up to max depth
+		// 	var interpolate = (pts, _t, depth, max) => {
+		// 		if (depth > max) return;
+		// 		let g = new Group();
+		// 		let t = Num.boundValue( _t, 0, 1 );
+
+		// 		for (let i=1, len=pts.length; i<len; i++) {
+		// 			g.push( Geom.interpolate( pts[i-1], pts[i], t ) );
+		// 		}
+		// 		g.push( Geom.interpolate( pts[pts.length-1], pts[0], t ) );
+
+		// 		form.fillOnly( (depth%2===0) ? "#fff" : "#123" ).polygon( g );
+		// 		interpolate( g, t+0.02, depth+1, max );
+		// 	}
+
+		// 	// Pts quick start mode.
+		// 	var run = Pts.quickStart("#pt", "#fe3");
+		// 	run( (time, ftime) => {
+		// 		let size = space.size.$multiply(1).minValue().value;
+		// 		let rect = Rectangle.corners( [space.center.$subtract( size ), space.center.$add( size )] );
+		// 		let t = (space.pointer.x / space.size.x) + (time%10000/10000);
+		// 		interpolate( rect, t, 0, 20 );
+		// 	});
+		// }
+
+		// Run random function of pts.
+		function getFunc(choices) {
+			var index = Math.floor(Math.random() * choices.length);
+			return choices[index];
+		}
+
+		const options = [fishEye, followEye];
+		getFunc(options)();
+	</script>
+</body>
+
+</html>
